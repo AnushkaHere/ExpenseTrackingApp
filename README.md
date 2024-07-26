@@ -29,6 +29,47 @@ Before running the application, ensure you have the following installed:
 - [Docker](https://www.docker.com/products/docker-desktop) (for containerization)
 - [Git](https://git-scm.com/) (for version control)
 
+## Directory Structure
+
+```bash
+    ExpenseTrackingApp
+    ├── .github
+    │   └── workflows
+    │       └── ci-cd.yml
+    ├── src
+    │   ├── main
+    │   │   ├── java
+    │   │   │   └── com
+    │   │   │       └── expense
+    |   |   |           |── config
+    │   │   │           │   └── SecurityConfig.java
+    |   |   |           |   └── SwaggerConfig.java
+    │   │   │           ├── controller
+    │   │   │           │   └── ExpenseController.java
+    │   │   │           ├── entity
+    │   │   │           │   └── Expense.java
+    │   │   │           ├── exception
+    │   │   │           │   └── ResourceNotFoundException.java
+    │   │   │           ├── repository
+    │   │   │           │   └── ExpenseRepository.java
+    │   │   │           └── service
+    │   │   │               └── ExpenseService.java
+    │   │   └── resources
+    │   │       ├── application.properties
+    │   │       └── data.sql
+    │   └── test
+    │       └── java
+    │           └── com
+    │               └── expense
+    │                   └── ExpenseControllerTest.java
+    |                   └── ExpenseServiceTest.java
+    |                   └── ExpenseTrackingAppApplicationTests.java
+    ├── Dockerfile
+    ├── README.md
+    ├── docker-compose.yml
+    └── pom.xml
+```
+
 ## Setup Instructions
 
 ### Running the Application
