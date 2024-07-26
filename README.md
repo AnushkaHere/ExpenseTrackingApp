@@ -42,7 +42,7 @@ Before running the application, ensure you have the following installed:
     │   │   │   └── com
     │   │   │       └── expense
     |   |   |           |── config
-    │   │   │           │   └── SecurityConfig.java
+    │   │   │           │   |── SecurityConfig.java
     |   |   |           |   └── SwaggerConfig.java
     │   │   │           ├── controller
     │   │   │           │   └── ExpenseController.java
@@ -61,8 +61,8 @@ Before running the application, ensure you have the following installed:
     │       └── java
     │           └── com
     │               └── expense
-    │                   └── ExpenseControllerTest.java
-    |                   └── ExpenseServiceTest.java
+    │                   |── ExpenseControllerTest.java
+    |                   |── ExpenseServiceTest.java
     |                   └── ExpenseTrackingAppApplicationTests.java
     ├── Dockerfile
     ├── README.md
