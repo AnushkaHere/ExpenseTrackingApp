@@ -31,109 +31,82 @@ Before running the application, ensure you have the following installed:
 
 ## Setup Instructions
 
-### Local Development
+### Running the Application
 
-1. **Clone the Repository:**
-
-     ```bash
-       git clone https://github.com/YourUsername/ExpenseTrackingApp.git
-     ```
-     
-     ```bash
-       cd ExpenseTrackingApp
-     ```
-2. **Build and Run the Application:**
-
-    Ensure you have Maven installed. You can run the application using Maven:
-
+#### Using Maven
+1. Clone the repository:
     ```bash
-      ./mvnw spring-boot:run
+    git clone https://github.com/AnushkaHere/ExpenseTrackingApp.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd ExpenseTrackingApp
+    ```
+3. Build the project:
+    ```bash
+    mvn clean install
+    ```
+4. Run the application:
+    ```bash
+    mvn spring-boot:run
     ```
 
-3. **Access the Application:**
-
-    Open your browser and navigate to http://localhost:8080/api/expenses to start interacting with the API.
-
-4. **Running with Docker:**
-
-    Build the Docker Image:
-
+#### Using Docker
+1. Clone the repository:
     ```bash
-      docker build -t expense-tracking-app .
+    git clone https://github.com/AnushkaHere/ExpenseTrackingApp.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd ExpenseTrackingApp
+    ```
+3. Build and run the containers:
+    ```bash
+    docker-compose up --build
     ```
 
-5. **Run the Docker Container:**
+### Accessing the Application
+- The application will be available at `http://localhost:8080`.
+- Swagger UI can be accessed at `http://localhost:8080/swagger-ui.html`.
 
-    ```bash
-      docker run -p 8080:8080 expense-tracking-app
+### Testing the Application
+You can use Postman or any other API client to test the endpoints. Here are some example requests:
+
+#### Get All Expenses
+- **Endpoint**: `GET /api/expenses`
+- **Response**: Returns a list of all expenses
+
+#### Get Expense by ID
+- **Endpoint**: `GET /api/expenses/{id}`
+- **Response**: Returns the details of the expense with the given ID
+
+#### Create Expense
+- **Endpoint**: `POST /api/expenses`
+- **Request Body**:
+    ```json
+    {
+        "description": "Groceries",
+        "amount": 50.00,
+        "date": "2023-07-20"
+    }
     ```
+- **Response**: Returns the created expense
 
-6. **Access the Application:**
+#### Update Expense
+- **Endpoint**: `PUT /api/expenses/{id}`
+- **Request Body**:
+    ```json
+    {
+        "description": "Groceries and utilities",
+        "amount": 75.00,
+        "date": "2023-07-20"
+    }
+    ```
+- **Response**: Returns the updated expense
 
-    Open your browser and navigate to http://localhost:8080/api/expenses.
-
-## API Documentation
-  
-  Swagger UI
-  The Swagger UI is available at http://localhost:8080/swagger-ui/index.html. It provides a user-friendly interface for exploring the API endpoints and their details.
-  
-  ### Endpoints
-  
-  **Expenses API**
-  - GET /api/expenses: Retrieve a list of all expenses
-  - GET /api/expenses/{id}: Retrieve a specific expense by ID
-  - POST /api/expenses: Create a new expense
-  - PUT /api/expenses/{id}: Update an existing expense
-  - DELETE /api/expenses/{id}: Delete an expense
-  
-  **Example API Requests**
-  
-  Retrieve All Expenses
- 
-  ```bash
-    curl -X GET "http://localhost:8080/api/expenses" -H "accept: application/json"
-  ```
-  Retrieve an Expense by ID
-  
-  ```bash
-    curl -X GET "http://localhost:8080/api/expenses/1" -H "accept: application/json"
-  ```
-  
-  Create a New Expense
-  ```bash
-    curl -X POST "http://localhost:8080/api/expenses" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"amount\":100,\"description\":\"Groceries\",\"date\":\"2023-01-01\"}"
-  ```
-
-  Update an Expense
-  
-  ```bash
-    curl -X PUT "http://localhost:8080/api/expenses/1" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"amount\":150,\"description\":\"Groceries and more\",\"date\":\"2023-01-01\"}"
-  ```
-  
-  Delete an Expense
-  ```bash
-    curl -X DELETE "http://localhost:8080/api/expenses/1" -H "accept: application/json"
-  ```
+#### Delete Expense
+- **Endpoint**: `DELETE /api/expenses/{id}`
+- **Response**: Deletes the expense with the given ID
 
 ## CI/CD Pipeline
-
-The CI/CD pipeline is configured using GitHub Actions. The workflow file is located at `.github/workflows/main.yml`. The pipeline performs the following steps:
-
-1. Checks out the code from the repository.
-2. Sets up JDK 17.
-3. Caches Maven dependencies.
-4. Builds the application using Maven.
-5. Builds the Docker image.
-6. Runs the Docker container.
-7. Waits for the application to start.
-8. Runs the tests.
-9. Pushes the Docker image to Docker Hub if the tests pass.
-
-### Secrets
-
-The following secrets must be configured in your GitHub repository for the CI/CD pipeline to work:
-
-- `DOCKER_USERNAME`: Your Docker Hub username.
-- `DOCKER_PASSWORD`: Your Docker Hub password.
-
-...
+The CI/CD pipeline is configured using GitHub Actions. The workflow file is located at `.github/workflows/ci-cd.yml`. It includes steps for building the project, running tests, and deploying the application.
